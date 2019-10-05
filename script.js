@@ -50,7 +50,7 @@ class Counter extends React.Component {
   }
 }
 
-//Create a Controlled Input
+//CREATE A CONTROLLED INPUT
 class ControlledInput extends React.Component {
   constructor(props) {
     super(props);
