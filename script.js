@@ -50,7 +50,7 @@ class Counter extends React.Component {
   }
 }
 
-//CREATE A CONTROLLED INPUT
+//Create a Controlled Input
 class ControlledInput extends React.Component {
   constructor(props) {
     super(props);
@@ -118,6 +118,36 @@ class MyForm extends React.Component {
         {/* change code below this line */}
         <h1>{this.state.submit}</h1>
         {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+//Pass State as Props to Child Components
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'CamperBot'
+    };
+  }
+  render() {
+    return (
+      <div>
+        <Navbar /* your code here */ name={this.state.name} />
+      </div>
+    );
+  }
+}
+
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello, my name is:{this.props.name} </h1>
       </div>
     );
   }
