@@ -1,3 +1,60 @@
+// Pass an Array as Props
+const List = props => {
+  {
+    /* change code below this line */
+  }
+  return <p>{props.tasks.join(', ')}</p>;
+  {
+    /* change code above this line */
+  }
+};
+
+class ToDo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        {/* change code below this line */}
+        <List tasks={['walk dog', 'workout']} />
+        <h2>Tomorrow</h2>
+        <List tasks={['walk dog', 'workout', 'workout']} />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+//Pass Props to a Stateless Functional Component
+const CurrentDate = props => {
+  return (
+    <div>
+      {/* change code below this line */}
+      <p>The current date is: {props.date}</p>
+      {/* change code above this line */}
+    </div>
+  );
+};
+
+class Calendar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>What date is it?</h3>
+        {/* change code below this line */}
+        <CurrentDate date={Date()} />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
 //COUNTER
 class Counter extends React.Component {
   constructor(props) {
