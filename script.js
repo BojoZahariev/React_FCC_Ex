@@ -1,3 +1,96 @@
+// Access Props Using this.props
+class ReturnTempPassword extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        {/* change code below this line */}
+        <p>
+          Your temporary password is: <strong>{this.props.tempPassword}</strong>
+        </p>
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+class ResetPassword extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h2>Reset Password</h2>
+        <h3>We've generated a new temporary password for you.</h3>
+        <h3>Please reset this password from your account settings ASAP.</h3>
+        {/* change code below this line */}
+        <ReturnTempPassword tempPassword={'sssssssssssss'} />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+//Use PropTypes to Define the Props You Expect
+const Items = props => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>;
+};
+
+// change code below this line
+Items.propTypes = { quantity: PropTypes.number.isRequired };
+// change code above this line
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items />;
+  }
+}
+
+//Override Default Props
+const Items = props => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>;
+};
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    {
+      /* change code below this line */
+    }
+    return <Items quantity={10} />;
+    {
+      /* change code above this line */
+    }
+  }
+}
+
+//Use Default Props
+const ShoppingCart = props => {
+  return (
+    <div>
+      <h1>Shopping Cart Component</h1>
+    </div>
+  );
+};
+// change code below this line
+ShoppingCart.defaultProps = { items: 0 };
+
 // Pass an Array as Props
 const List = props => {
   {
@@ -28,30 +121,132 @@ class ToDo extends React.Component {
   }
 }
 
-//Pass Props to a Stateless Functional Component
-const CurrentDate = props => {
-  return (
-    <div>
-      {/* change code below this line */}
-      <p>The current date is: {props.date}</p>
-      {/* change code above this line */}
-    </div>
-  );
-};
-
-class Calendar extends React.Component {
+//Review Using Props with Stateless Functional Components
+class CampSite extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div>
-        <h3>What date is it?</h3>
+        <Camper />
+      </div>
+    );
+  }
+}
+// change code below this line
+const Camper = props => <p>{props.name}</p>;
+
+Camper.defaultProps = {
+  name: 'CamperBot'
+};
+
+Camper.propTypes = {
+  name: PropTypes.string.isRequired
+};
+
+// Create a Stateful Component
+
+class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    // initialize state here
+    this.state = {
+      name: 'Bojo'
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+}
+//Render State in the User Interface
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    };
+  }
+  render() {
+    return (
+      <div>
         {/* change code below this line */}
-        <CurrentDate date={Date()} />
+        <h1>{this.state.name}</h1>
         {/* change code above this line */}
       </div>
     );
+  }
+}
+
+//Set State with this.setState
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // change code below this line
+    this.setState({
+      name: 'React Rocks!'
+    });
+    // change code above this line
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+}
+
+//USE STATE TO TOGGLE ELEMENT
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: false
+    };
+    // change code below this line
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+    // change code above this line
+  }
+  // change code below this line
+  toggleVisibility() {
+    if (!this.state.visibility) {
+      this.setState({
+        visibility: true
+      });
+    } else {
+      this.setState({
+        visibility: false
+      });
+    }
+  }
+  // change code above this line
+  render() {
+    if (this.state.visibility) {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+          <h1>Now you see me!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+        </div>
+      );
+    }
   }
 }
 
