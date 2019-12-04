@@ -314,3 +314,98 @@ class ShoppingCart extends React.Component {
     }
   }
 }
+
+//////////////////////////////////////////////
+//Use PropTypes to Define the Props You ExpectPassed
+const Items = props => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>;
+};
+
+// change code below this line
+Items.propTypes = { quantity: PropTypes.number.isRequired };
+// change code above this line
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items />;
+  }
+}
+
+//////////////////////////////////////
+//Access Props Using this.props
+class ReturnTempPassword extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        {/* change code below this line */}
+        <p>
+          Your temporary password is: <strong>{this.props.tempPassword}</strong>
+        </p>
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+class ResetPassword extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h2>Reset Password</h2>
+        <h3>We've generated a new temporary password for you.</h3>
+        <h3>Please reset this password from your account settings ASAP.</h3>
+        {/* change code below this line */}
+        <ReturnTempPassword tempPassword={'12345678'} />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+/////////////////////////////////////////////////////
+//Review Using Props with Stateless Functional Components
+
+// change code below this line
+
+class Camper extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <p>{this.props.name}</p>;
+  }
+}
+
+Camper.propTypes = {
+  name: PropTypes.string.isRequired
+};
+
+Camper.defaultProps = {
+  name: 'CamperBot'
+};
+
+class CampSite extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Camper name={'Smokinq'} />
+      </div>
+    );
+  }
+}
