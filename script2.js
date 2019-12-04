@@ -177,3 +177,43 @@ class TypesOfFood extends React.Component {
     );
   }
 }
+
+/////////////////////////////////////
+//Render a Class Component to the DOM
+class TypesOfFood extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Types of Food:</h1>
+        {/* change code below this line */}
+        <Fruits />
+        <Vegetables />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+// change code below this line
+ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
+
+///////////////////////////////////////////
+//Write a React Component from ScratchPassed
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>My First React Component!</h1>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
