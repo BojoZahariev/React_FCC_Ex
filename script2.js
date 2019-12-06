@@ -619,3 +619,180 @@ class Counter extends React.Component {
     );
   }
 }
+
+////////////////////////////////////////////////
+//Create a Controlled Input
+class ControlledInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+    // change code below this line
+    this.handleChange = this.handleChange.bind(this);
+    // change code above this line
+  }
+  // change code below this line
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  // change code above this line
+  render() {
+    return (
+      <div>
+        {/* change code below this line */}
+        <input type="text" value={this.state.input} onChange={this.handleChange} />
+        {/* change code above this line */}
+        <h4>Controlled Input:</h4>
+        <p>{this.state.input}</p>
+      </div>
+    );
+  }
+}
+
+//////////////////////////////////////////
+//Create a Controlled Form
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      submit: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    // change code below this line
+    this.setState({
+      submit: this.state.input
+    });
+    // change code above this line
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          {/* change code below this line */}
+          <input type="text" value={this.state.input} onChange={this.handleChange} />
+          {/* change code above this line */}
+          <button type="submit">Submit!</button>
+        </form>
+        {/* change code below this line */}
+        <h1>{this.state.submit}</h1>
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+/////////////////////////////////////////////
+//Pass State as Props to Child Components
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'CamperBot'
+    };
+  }
+  render() {
+    return (
+      <div>
+        <Navbar name={this.state.name} />
+      </div>
+    );
+  }
+}
+
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello, my name is: {/* your code here */ this.props.name} </h1>
+      </div>
+    );
+  }
+}
+
+/////////////////////////////////////////////////
+//Pass a Callback as Props
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+  render() {
+    return (
+      <div>
+        {/* change code below this line */}
+        <GetInput input={this.state.inputValue} handleChange={this.handleChange} />
+
+        <RenderInput input={this.state.inputValue} />
+        {/* change code above this line */}
+      </div>
+    );
+  }
+}
+
+class GetInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Get Input:</h3>
+        <input value={this.props.input} onChange={this.props.handleChange} />
+      </div>
+    );
+  }
+}
+
+class RenderInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Input Render:</h3>
+        <p>{this.props.input}</p>
+      </div>
+    );
+  }
+}
+
+/////////////////////////////////////////
+//Use the Lifecycle Method componentWillMount
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    // change code below this line
+    console.log('ding');
+    // change code above this line
+  }
+  render() {
+    return <div />;
+  }
+}
